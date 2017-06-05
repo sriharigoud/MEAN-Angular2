@@ -8,10 +8,12 @@ Make sure you have angular cli installed.
 $ npm install -g angular-cli
 ```
 
+Make sure you have installed mongoDB. Check it's installation by typing ```mongo```
+
 Clone the repo
 ```bash
 $ git clone https://github.com/sriharigoud/angular2-mean.git
-$ cd ng2-mean
+$ cd angular2-mean
 ```
 
 Install dependencies
