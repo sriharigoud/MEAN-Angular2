@@ -31,3 +31,5 @@ Run the app
 ```bash
 $ npm run build
 ```
+
+Point your browser to http://localhost:3000/posts
