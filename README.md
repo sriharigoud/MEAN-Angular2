@@ -9,7 +9,8 @@ $ npm install -g angular-cli
 ```
 
 Make sure you have mongoDB installed. Check it's installation by typing `mongo`
-Create a database in mongo "test" and import quotes.json(find it in the folder mongo-data/quotes.json) to it. 
+
+Run the following command to create a `test` database and `quotes` collections
 
 ```
 mongoimport --db test --collection quotes --drop --file mongo-data/quotes.json
