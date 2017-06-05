@@ -1,0 +1,14 @@
+<p>
+  posts works!
+</p>
+<div class="container">
+  <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add Quote</button>
+  <div class="row" *ngFor="let post of posts">
+    <div class="card card-block">
+      <h4 class="card-title">{{ post.name }}</h4>
+      <p class="card-text">{{post.quote}}</p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+</div>
