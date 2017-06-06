@@ -32,4 +32,4 @@ Run the app
 $ npm run build
 ```
 
-Point your browser to http://localhost:3000/posts
+Point your browser to http://localhost:3000/quotes
