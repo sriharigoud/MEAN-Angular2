@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Imports commented out for brevity
 import { RouterModule } from '@angular/router';
@@ -32,6 +33,7 @@ const ROUTES = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES) // Add routes to the app
   ],
   providers: [QuotesService],

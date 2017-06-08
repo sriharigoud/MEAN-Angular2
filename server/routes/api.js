@@ -8,7 +8,7 @@ const API = 'https://jsonplaceholder.typicode.com';
 
 /* GET api listing. */
 router.get('/', (req, res) => {
-  res.send('api works');
+  //res.send('api works');
 });
 
 // Get all quotes
@@ -22,15 +22,34 @@ router.get('/quotes', (req, res) => {
   //   .catch(error => {
   //     res.status(500).send(error)
   //   });
-    MongoClient.connect('mongodb://localhost:27017/test', function (err, db) {
-     if (err) res.status(500).send(err);
+  MongoClient.connect('mongodb://localhost:27017/test', function (err, db) {
+    if (err) res.status(500).send(err);
 
-      db.collection('quotes').find().toArray(function (err, result) {
-        if (err) res.status(500).send(err);
+    db.collection('quotes').find().toArray(function (err, result) {
+      if (err) res.status(500).send(err);
 
-        res.status(200).json(result);
-      })
+      res.status(200).json(result);
     })
+  })
 });
+
+router.post('/addQuote', (req, res) => {
+  MongoClient.connect('mongodb://localhost:27017/test', function (err, db) {
+    if (err) res.status(500).send(err);
+
+    var collection = db.collection('quotes');
+    collection.insert({
+      name: req.body.name,
+      quote: req.body.quote
+    }, function (err, docs) {
+      collection.count(function (err, count) {
+        return res.status(200).json({
+          count: "count "+count,
+          msg: "Quote addedd successfully"
+        });
+      });
+    });
+  });
+})
 
 module.exports = router;

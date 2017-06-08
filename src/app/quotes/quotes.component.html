@@ -1,7 +1,25 @@
-<p>
-  quotes works!
-</p>
 <div class="container">
+  <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+  <form (ngSubmit)="onSubmit(quoteForm)" [formGroup]="quoteForm" novalidate>
+    <div class="form-group row">
+      <label for="example-text-input" class="col-2 col-form-label">Name</label>
+      <div class="col-10">
+        <input class="form-control" formControlName="name" type="text" id="name"> <span *ngIf="quoteForm.controls.name.errors">This field is required!</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="example-text-input" class="col-2 col-form-label">Name</label>
+      <div class="col-10">
+        <input formControlName="quote" class="form-control" type="text" id="quote"> <span *ngIf="quoteForm.controls.quote.errors">This field is required!</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-5 col-sm-10">
+       <button [disabled]="quoteForm.invalid" type="submit" class="btn btn-primary">Add Quote</button>
+      </div>
+    </div>
+  </form>
+  <p></p>
   <div class="row" *ngFor="let quote of quotes">
     <div class="card card-block">
       <h4 class="card-title">{{ quote.name }}</h4>
