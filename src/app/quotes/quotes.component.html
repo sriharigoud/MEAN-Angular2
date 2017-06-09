@@ -4,13 +4,23 @@
     <div class="form-group row">
       <label for="example-text-input" class="col-2 col-form-label">Name</label>
       <div class="col-10">
-        <input class="form-control" formControlName="name" type="text" id="name"> <span *ngIf="quoteForm.controls.name.errors">This field is required!</span>
+        <input class="form-control" formControlName="name" type="text" id="name">
+        <span
+          class="error"
+          *ngIf="quoteForm.get('name').hasError('required') && quoteForm.get('name').touched">
+          This field is required!
+        </span>
       </div>
     </div>
     <div class="form-group row">
-      <label for="example-text-input" class="col-2 col-form-label">Name</label>
+      <label for="example-text-input" class="col-2 col-form-label">Quote</label>
       <div class="col-10">
-        <input formControlName="quote" class="form-control" type="text" id="quote"> <span *ngIf="quoteForm.controls.quote.errors">This field is required!</span>
+        <input formControlName="quote" class="form-control" type="text" id="quote">
+        <span
+          class="error"
+          *ngIf="quoteForm.get('quote').hasError('required') && quoteForm.get('quote').touched">
+          This field is required!
+        </span>
       </div>
     </div>
     <div class="form-group row">
