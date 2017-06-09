@@ -37,7 +37,7 @@ export class QuotesComponent implements OnInit {
     });
   }
 
-  getQuotes(){
+  getQuotes() {
     // Retrieve quotes from the API
     this.quotesService.getAllQuotes().subscribe((quotes: Array<Quote>) => {
       this.quotes = quotes;
