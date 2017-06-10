@@ -1,4 +1,5 @@
-# Angular 2 - Mean example
+# Angular 2 - Mean example 
+# Extended with login support(6th Jun 2017)
 
 App to demostrate building an angular 2 app in the MEAN stack with the Angular CLI.
 
@@ -10,8 +11,7 @@ $ npm install -g angular-cli
 
 Make sure you have mongoDB installed. Check it's installation by typing `mongo`
 
-Run the following command to create a `test` database and `quotes` collections
-
+Check mongo-dump/ and import them to your `test` database
 ```
 mongoimport --db test --collection quotes --drop --file mongo-data/quotes.json
 ```
