@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="pull-right" *ngIf="user.email">Hi {{user.first_name + ' ' + user.last_name}} | <a href="#" (click)="logout()">Logout</a></p>
   <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
   <form (ngSubmit)="onSubmit(quoteForm)" [formGroup]="quoteForm" novalidate>
     <div class="form-group row">
@@ -15,6 +16,7 @@
     <div class="form-group row">
       <label for="example-text-input" class="col-2 col-form-label">Quote</label>
       <div class="col-10">
+        
         <input formControlName="quote" class="form-control" type="text" id="quote">
         <span
           class="error"
@@ -24,7 +26,7 @@
       </div>
     </div>
     <div class="form-group row">
-      <div class="offset-sm-5 col-sm-10">
+      <div class="">
        <button [disabled]="quoteForm.invalid" type="submit" class="btn btn-primary">Add Quote</button>
       </div>
     </div>

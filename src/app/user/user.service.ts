@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { Quote } from './quotes/quote';
+import { User } from './user';
 
 @Injectable()
-export class QuotesService {
+export class UserService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private router: Router) { }
 
-  // Get all quotes from the API
-  getAllQuotes() {
-    return this.http.get('/api/quotes', this.jwt())
-      .map(res => res.json())
-      .catch(this.handleErrorObservable);
-  }
-
-  addQuote(quote: Quote) {
-    return this.http.post('/api/addQuote', quote, this.jwt())
+  authenticate(params) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post('/api/authenticate', params, options)
       .map(res => res.json())
       .catch(this.handleErrorObservable);
   }
@@ -29,12 +25,16 @@ export class QuotesService {
     return Observable.throw(error.message || error);
   }
 
-  private jwt() {
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/login']);
+  }
+
+  getCurrentUser() {
     let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
-    let headers = new Headers({ 'Accept': 'application/json' });
     if (currentUser && currentUser.token) {
-      headers.append('Authorization', `Bearer ${currentUser.token}`);
+      return currentUser;
     }
-    return new RequestOptions({ headers: headers });
+    return new User();
   }
 }

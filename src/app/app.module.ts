@@ -7,27 +7,43 @@ import { ReactiveFormsModule } from '@angular/forms';
 // Imports commented out for brevity
 import { RouterModule } from '@angular/router';
 import { QuotesService } from './quotes.service';
+import { UserService } from './user/user.service';
 
 import { AppComponent } from './app.component';
 import { QuotesComponent } from './quotes/quotes.component';
+import { LoginComponent } from './user/login.component';
+import { RegisterComponent } from './user/register.component';
+
+import { AuthGuard } from './_gaurds/auth.guard';
 
 // Define the routes
 const ROUTES = [
   {
     path: '',
-    redirectTo: 'quotes',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
     path: 'quotes',
-    component: QuotesComponent
+    component: QuotesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuotesComponent
+    QuotesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +52,7 @@ const ROUTES = [
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES) // Add routes to the app
   ],
-  providers: [QuotesService],
+  providers: [QuotesService, UserService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
