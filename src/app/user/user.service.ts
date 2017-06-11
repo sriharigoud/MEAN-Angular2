@@ -21,6 +21,14 @@ export class UserService {
       .catch(this.handleErrorObservable);
   }
 
+  register(params) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post('/api/register', params, options)
+      .map(res => res.json())
+      .catch(this.handleErrorObservable);
+  }
+
   private handleErrorObservable(error: Response | any) {
     return Observable.throw(error.message || error);
   }

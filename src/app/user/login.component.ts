@@ -12,11 +12,18 @@ import { UserService } from './user.service';
             
             <form class="form-signin" (ngSubmit)="onSubmit(loginForm)" [formGroup]="loginForm" novalidate>       
                 <h2 class="form-signin-heading">{{title}}</h2>
+                <span
+          class="error"
+          *ngIf="loginForm.invalid">
+          Check all fields
+        </span>
                 <input type="text" formControlName="email" class="form-control" name="username" placeholder="Email Address" autofocus="" />
                 <input type="password" 
                 formControlName="password" class="form-control" name="password" placeholder="Password" required=""/>      
                 <button [disabled]="loginForm.invalid"class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+                 <a href="#" routerLink="/register">Need an account? Register</a>
             </form>
+           
         </div>`
     ,
     styleUrls: ['./login.component.scss']
