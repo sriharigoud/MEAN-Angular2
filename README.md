@@ -1,6 +1,8 @@
 # Angular 2 - Mean example 
-# Extended with login support(6th Jun 2017)
-# Update 11th June 2017: Users can add their own quotes and see. Updated datbase schema. 
+ Extended with login support(6th Jun 2017)
+ Update 11th June 2017: Users can add their own quotes and see. Updated datbase schema. 
+
+ 
 
 App to demostrate building an angular 2 app in the MEAN stack with the Angular CLI.
 
@@ -31,3 +33,4 @@ $ npm run build
 ```
 
 Point your browser to http://localhost:3000/quotes
+Password: 123456
