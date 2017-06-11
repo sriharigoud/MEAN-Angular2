@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { Quote } from './quotes/quote';
+import { User } from './user/user';
 
 @Injectable()
 export class QuotesService {
@@ -13,8 +14,8 @@ export class QuotesService {
   constructor(private http: Http) { }
 
   // Get all quotes from the API
-  getAllQuotes() {
-    return this.http.get('/api/quotes', this.jwt())
+  getAllQuotes(user) {
+    return this.http.post('/api/quotes', user, this.jwt())
       .map(res => res.json())
       .catch(this.handleErrorObservable);
   }

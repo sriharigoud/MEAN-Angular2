@@ -28,6 +28,7 @@ export class QuotesComponent implements OnInit {
 
 
   onSubmit({ value, valid }: { value: Quote, valid: boolean }) {
+    value['user'] = this.user;
     this.quotesService.addQuote(value).subscribe((msg) => {
       this.getQuotes();
       this.createForm();
@@ -49,7 +50,7 @@ export class QuotesComponent implements OnInit {
 
   getQuotes() {
     // Retrieve quotes from the API
-    this.quotesService.getAllQuotes().subscribe((quotes: Array<Quote>) => {
+    this.quotesService.getAllQuotes({user: this.user}).subscribe((quotes: Array<Quote>) => {
       this.quotes = quotes;
     }, error => this.errorMessage = <any>error);
   }

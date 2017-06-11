@@ -16,11 +16,11 @@ router.get('/', (req, res) => {
 });
 
 // Get all quotes
-router.get('/quotes', (req, res) => {
+router.post('/quotes', (req, res) => {
   MongoClient.connect('mongodb://localhost:27017/test', function (err, db) {
     if (err) res.status(500).send(err);
 
-    db.collection('quotes').find().toArray(function (err, result) {
+    db.collection('quotes').find({userId: req.body.user._id}).toArray(function (err, result) {
       if (err) res.status(500).send(err);
 
       res.status(200).json(result);
@@ -35,7 +35,8 @@ router.post('/addQuote', (req, res) => {
     var collection = db.collection('quotes');
     collection.insert({
       name: req.body.name,
-      quote: req.body.quote
+      quote: req.body.quote,
+      userId: req.body.user._id
     }, function (err, docs) {
       collection.count(function (err, count) {
         return res.status(200).json({
