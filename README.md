@@ -2,7 +2,9 @@
  Extended with login and register support(6th Jun 2017)
  Update 11th June 2017: Users can add their own quotes and see. Updated datbase schema. 
 
+ # PHP - NODE - SOCKET.IO - Stream exmple
  
+ https://github.com/moemoe89/Simple-realtime-message-SocketIO-NodeJS-CI/blob/master/server.js
 
 App to demostrate building an angular 2 app in the MEAN stack with the Angular CLI.
 
